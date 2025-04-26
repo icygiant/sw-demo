@@ -1,0 +1,39 @@
+<clickhouse>
+    <logger>
+        <level>information</level>  <!-- Info level to keep logs under control -->
+        <log>/var/log/clickhouse-server/clickhouse-server.log</log>
+        <errorlog>/var/log/clickhouse-server/clickhouse-server.err.log</errorlog>
+        <size>104857600</size>  <!--mall log size cap, big log files can grow fast and eat SSD space -->
+        <count>3</count>
+    </logger>
+
+    <display_name>ClickHouse-test</display_name>
+
+    <!-- Bind to localhost only for safety -->
+    <listen_host>127.0.0.1</listen_host>
+    <http_port>8123</http_port>
+    <tcp_port>9000</tcp_port>
+
+    <!-- Directories -->
+    <user_directories>
+        <users_xml>
+            <path>users.xml</path>
+        </users_xml>
+        <local_directory>
+            <path>/var/lib/clickhouse/access/</path>
+        </local_directory>
+    </user_directories>
+
+    <!-- Distributed DDL path (useful if you want to test distributed tables) -->
+    <distributed_ddl>
+        <path>/clickhouse/task_queue/ddl</path>
+    </distributed_ddl>
+
+    <!-- ClickHouse Keeper (needed for ReplicatedMergeTree) -->
+    <zookeeper>
+        <node>
+            <host>localhost</host>  <!-- Running Keeper locally -->
+            <port>9181</port>
+        </node>
+    </zookeeper>
+</clickhouse>

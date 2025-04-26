@@ -1,0 +1,37 @@
+<clickhouse>
+    <users>
+        <default>
+            <password></password>
+            <networks>
+                <ip>::/0</ip> <!-- Allow all IPs (only localhost is in use) -->
+            </networks>
+            <profile>default</profile>
+            <quota>default</quota>
+        </default>
+    </users>
+
+    <profiles>
+        <default>
+            <max_memory_usage>2147483648</max_memory_usage> <!-- 2GB for queries -->
+            <max_threads>2</max_threads>  <!-- Only use 2 CPU threads for efficiency -->
+            <log_queries>1</log_queries>  <!-- Query logging enabled - essential for performance checks -->
+            <load_balancing>in_order</load_balancing> <!-- Use in_order load balancing just in case we want to test distributed tables-->
+            <max_partitions_per_insert_block>50</max_partitions_per_insert_block>
+            <max_bytes_before_external_group_by>10000000</max_bytes_before_external_group_by> <!-- Spill to disk after 10MB -->
+            <use_uncompressed_cache>0</use_uncompressed_cache>
+        </default>
+    </profiles>
+
+    <quotas>
+        <default>
+            <interval>
+                <duration>3600</duration>
+                <queries>0</queries>
+                <errors>0</errors>
+                <result_rows>0</result_rows>
+                <read_rows>0</read_rows>
+                <execution_time>0</execution_time>
+            </interval>
+        </default>
+    </quotas>
+</clickhouse>
