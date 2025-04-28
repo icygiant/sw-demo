@@ -1,0 +1,19 @@
+[project]
+name = "freq"
+version = "0.1.0"
+description = "A dashboard-like jupyter notebook containing a frequentist analysis of an A/B test"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datetime>=5.5",
+    "dotenv>=0.9.9",
+    "hide-code>=0.7.0",
+    "ipykernel>=6.29.5",
+    "ipython>=9.2.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.1",
+    "numpy>=2.2.5",
+    "pandas>=2.2.3",
+    "scipy>=1.15.2",
+    "seaborn>=0.13.2",
+]
