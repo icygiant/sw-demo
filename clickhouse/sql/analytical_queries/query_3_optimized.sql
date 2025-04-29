@@ -29,8 +29,8 @@ with first_install as (
 
 select
     day_of_life
-    , round(avg(sum_7_days)) as avg_sum_7_days
-    , round(avg(sum_30_days)) as avg_sum_30_days
+    , round(avg(sum_7_days)) as avg_sum_7_days_eur
+    , round(avg(sum_30_days)) as avg_sum_30_days_eur
 from payment_sums
 where day_of_life <= 10
 group by 1

@@ -32,9 +32,11 @@ select
 from login_data ld
 left join payment_data pd on ld.user_id = pd.user_id;
 
--- full outer join payment_data using (user_id);
+/*
+full outer join payment_data using (user_id);
 
---we could go for this not to miss users who only login or only pay.
---however, such cases wouldn't make any business sense 
---and would warrant investigations regarding bugs on the backend side 
--- I would enforce quality checks way earlier in the pipeline to flag such users
+we could go for this not to miss users who only login or only pay.
+however, such cases wouldn't make any business sense 
+and would warrant investigations regarding bugs on the backend side. 
+I would enforce quality checks way earlier in the pipeline to flag such users.
+*/

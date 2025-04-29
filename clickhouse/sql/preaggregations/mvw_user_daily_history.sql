@@ -17,5 +17,5 @@ select
     , uniqState(f.event_id) as event_count
     , sumState(coalesce(mv.amount_in_eur, 0)) as total_amount_eur
 from sw_test.fact_table f
-left join sw_test.mvw_fact_with_eur_conversions mv
+left join sw_test.fact_with_eur_conversions mv
 group by 1,2,3;
