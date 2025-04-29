@@ -91,3 +91,9 @@ Connect using the native ClickHouse client:
 ```bash
 clickhouse-client --host 127.0.0.1 --port 9000
 ```
+
+After connecting to the instance, first, run the following query to create the test db:
+
+```sql
+CREATE DATABASE sw_test;
+```

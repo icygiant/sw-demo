@@ -39,7 +39,6 @@ I am really simplifying the implementation here by:
 - Using a **single rate per currency** (e.g., only `JPY → EUR`)
 - Restricting to a specific date range
 - Avoiding true FX histories or multi-currency chaining
-- Pre-converting everything to EUR to compute financial metrics downstream only in EUR (likely in the Spark/ClickHouse query logic)
 
 ---
 
