@@ -4,14 +4,13 @@ create table if not exists sw_test.fact_table
     event_name LowCardinality(String),
     event_time DateTime,
     currency LowCardinality(Nullable(String)),
-    amount Nullable(Float32)
+    amount Decimal(10, 2),
+    ingest_time DateTime DEFAULT now(),
     
-    --INDEX idx_currency currency TYPE set(100) GRANULARITY 1
-    --INDEX idx_event_name event_name TYPE set(100) GRANULARITY 1
+    event_id UInt64 MATERIALIZED
+        sipHash64(toString(user_id) || toString(toUnixTimestamp(event_time)) || event_name)
 )
-
-engine = MergeTree
-partition by (event_name)
-order by (event_time, user_id)
-sample by user_id -- optional, useful for large datasets with sampling queries, not really relevant for such a smol demo :D
-settings index_granularity = 8192; -- fine-tuning the granularity for optimal performance
+ENGINE = ReplacingMergeTree(ingest_time)
+partition by (event_name) -- low-cardinality (at least for now)
+order by (event_id)
+SETTINGS index_granularity = 8192;
