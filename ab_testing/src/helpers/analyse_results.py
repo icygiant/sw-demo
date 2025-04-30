@@ -3,7 +3,7 @@ import pandas as pd
 from scipy import stats
 import numpy as np
 from IPython.display import display, Markdown
-from preprocess_data import prepare_data_for_analysis
+from src.helpers.preprocess_data import prepare_data_for_analysis
 
 # Compare conversion rates
 def compare_conversions(df):

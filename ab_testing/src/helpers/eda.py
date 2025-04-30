@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from IPython.display import display, Markdown
 from datetime import datetime
-from preprocess_data import prepare_data_for_analysis
+from src.helpers.preprocess_data import prepare_data_for_analysis
+
 
 # 📋 Helper: Section Header
 def section_header(text):

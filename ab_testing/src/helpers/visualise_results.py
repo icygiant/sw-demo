@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from preprocess_data import prepare_data_for_analysis
+from src.helpers.preprocess_data import prepare_data_for_analysis
 import scipy.stats as stats
 import numpy as np
 
