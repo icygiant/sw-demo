@@ -10,10 +10,10 @@
 
 # Task 2.
 
-1. Frequentist A/B testing analysis:
+## 1. Frequentist A/B testing analysis:
 
-* The Jupyter notebook containing the visualisations, the analysis and the summary of results is `ab_testing/freq/notebooks/main.ipynb`
+* The Jupyter notebook containing the visualisations, the analysis and the interpretation of results is `ab_testing/freq/notebooks/main.ipynb`
 
-2. Bayesian A/B testing analysis:
+## 2. Bayesian A/B testing analysis:
 
-* The Jupyter notebook containing the visualisations, the analysis and the summary of results is `ab_testing/bayesian/notebooks/main.ipynb`
+* The Jupyter notebook containing the visualisations, the analysis and the interpretation of results is `ab_testing/bayesian/notebooks/main.ipynb`

@@ -78,5 +78,10 @@ def prepare_data_for_analysis(file_path):
     
     return df, summary
 
+def preaggregate_data_for_analysis(file_path, col):
+    _, sum_df = prepare_data_for_analysis(file_path)
+    df = sum_df[['ab_group', 'users', col]]
+    return df
+
 if __name__ == "__main__":
-    df_prepared, summary_metrics = prepare_data_for_analysis()
+    _df, summary_metrics = prepare_data_for_analysis()
