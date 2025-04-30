@@ -2,7 +2,7 @@ create table sw_test.first_installs(
     user_id UInt64,
     install_date Date
 )
-engine = MergeTree() order by (user_id);
+engine = MergeTree() order by (user_id); --no need for ReplacingMergeTree() as the fact table is already deduped
 
 create materialized view sw_test.mvw_first_installs to sw_test.first_installs
 as
