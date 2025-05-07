@@ -157,9 +157,7 @@ $$
 
 Priors:
 
-$
-\beta_k \sim \mathcal{N}(0, \tau^2)
-$
+$\beta_k \sim \mathcal{N}(0, \tau^2)$
 
 **Pros**:
 
