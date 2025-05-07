@@ -6,7 +6,7 @@ This document evaluates Bayesian modeling options for analyzing a two-group A/B 
 
 **Model**:
 
-Let $ X_i \sim \text{Binomial}(n_i, p_i) $ where:
+Let  $X_i \sim \text{Binomial}(n_i, p_i)$ where:
 
 - $X_i$ is the number of conversions in variant $i$
 - $n_i$ is the number of exposures (users shown variant $i$)
@@ -47,7 +47,7 @@ The conditions above match the context I am presented with the closest, however 
 
 **Model**:
 
-Let $ \theta_i = \log \left( \frac{p_i}{1 - p_i} \right) $, the log-odds of conversion.
+Let $\theta_i = \log \left( \frac{p_i}{1 - p_i} \right)$, the log-odds of conversion.
 
 $$
 \theta_i \sim \mathcal{N}(\mu, \sigma^2) \\
@@ -81,15 +81,15 @@ This is potentially a good match as well, though with the current limited scope 
 Useful when modeling cohorts (e.g., device type, geo) or smoothing across segments.
 
 $$
-p_i \sim \text{Beta}(\alpha, \beta) \\
-\alpha, \beta \sim \text{Hyperpriors} \\
+p_i \sim \text{Beta}(\alpha, \beta) \quad
+\alpha, \beta \sim \text{Hyperpriors} \quad
 X_i \sim \text{Binomial}(n_i, p_i)
 $$
 
 Reparameterized version:
 
 $$
-\mu \sim \text{Beta}(a, b), \quad \kappa \sim \text{Gamma}(c, d) \\
+\mu \sim \text{Beta}(a, b), \quad \kappa \sim \text{Gamma}(c, d) \quad
 \alpha = \mu \kappa, \quad \beta = (1 - \mu) \kappa
 $$
 
@@ -122,7 +122,7 @@ Since I don't have access to segment data, this is skipped, though potentially u
 
 **Approach**:
 
-Estimate prior parameters $ \alpha, \beta $ from historical A/B test data. Treat those as fixed priors for future experiments.
+Estimate prior parameters $\alpha, \beta$ from historical A/B test data. Treat those as fixed priors for future experiments.
 
 **Pros**:
 
@@ -197,16 +197,16 @@ I will be doing a sensitivity analysis using the simplest modelling alternative 
 
 ## Prior Choice
 
-Given a large sample size and ~15% base conversion, I could use **weakly informative** prior: $ \alpha = 15, \beta = 85 $ → centers prior at 15% with moderate weight (acts like prior of 100 users). If extremely skeptical, I can use something like $ \alpha = 3, \beta = 17 $ (lower weight).
+Given a large sample size and ~15% base conversion, I could use **weakly informative** prior: $\alpha = 15, \beta = 85$ → centers prior at 15% with moderate weight (acts like prior of 100 users). If extremely skeptical, I can use something like $\alpha = 3, \beta = 17$ (lower weight).
 
 Since the business risk from a "wrong" call could be pretty high given the conversion rate I would prefer to execute a sensitivity analysis with the following priors.
 
 | Prior | Parameters              | Rationale                          |
 |-------|--------------------------|------------------------------------|
-| **Neutral** | $ \text{Beta}(1, 1) $       | Easy to explain, uninformative     |
-| **Skeptical** | $ \text{Beta}(3, 17) $     | Encodes prior belief that CVRs are likely ~15% |
-| **Weak** | $ \text{Beta}(15, 85) $     | Centers prior at ~15%, "reasonable" weight |
-| **Historical** | $ \text{Beta}(150, 850) $ | Shrinks to 15% but allows for learning |
+| **Neutral** | $\text{Beta}(1, 1)$       | Easy to explain, uninformative     |
+| **Skeptical** | $\text{Beta}(3, 17)$     | Encodes prior belief that CVRs are likely ~15% |
+| **Weak** | $\text{Beta}(15, 85)$     | Centers prior at ~15%, "reasonable" weight |
+| **Historical** | $\text{Beta}(150, 850)$ | Shrinks to 15% but allows for learning |
 
 ## Stopping rule:
 
