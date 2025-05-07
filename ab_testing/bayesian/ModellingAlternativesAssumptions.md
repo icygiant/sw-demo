@@ -50,8 +50,8 @@ The conditions above match the context I am presented with the closest, however 
 Let $\theta_i = \log \left( \frac{p_i}{1 - p_i} \right)$, the log-odds of conversion.
 
 $$
-\theta_i \sim \mathcal{N}(\mu, \sigma^2) \\
-p_i = \frac{1}{1 + e^{-\theta_i}} \\
+\theta_i \sim \mathcal{N}(\mu, \sigma^2) \quad
+p_i = \frac{1}{1 + e^{-\theta_i}} \quad
 X_i \sim \text{Binomial}(n_i, p_i)
 $$
 
